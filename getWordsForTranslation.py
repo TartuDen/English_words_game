@@ -9,13 +9,13 @@ class ReadDocx():
 
         # Get the first table in the document
         self.table = doc.tables[0]
-        self.read_words()
+        # self.read_words()
     def read_words(self):
         final_dic = {}
         # Get the second column of the table
         column2 = self.table.columns[1]
         column3 = self.table.columns[2]
-        list_ = ["–","-", "/"]
+        list_ = ["–","-"]
         # Loop through each cell in the column
         count=0
         for cell_eng,cell_rus in zip(column2.cells,column3.cells):
@@ -32,6 +32,6 @@ class ReadDocx():
                 # print(text_eng[:index].strip(),text_rus)
                 final_dic[text_eng[:index].strip()]=text_rus
                 count+=1
-        print(final_dic.keys())
+        # print(final_dic.keys(), len(final_dic.keys()))
         return(final_dic)
-s=ReadDocx()
+# s=ReadDocx()

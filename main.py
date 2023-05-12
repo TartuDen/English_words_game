@@ -20,6 +20,7 @@ def check_result(what_was_clicked):
     global rus
     if what_was_clicked in rus or rus in what_was_clicked:
         print(f"Correct '{en}' is '{what_was_clicked}'")
+        click_the_button()
 
 def click_the_button():
     global en
