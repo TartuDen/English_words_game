@@ -1,9 +1,11 @@
 from tkinter import *
 from getWordsForTranslation import ReadDocx
 import random
+from to_save_words import WordsToSave
 
 
 get_words = ReadDocx()
+
 words_dic = get_words.read_words()
 eng_w = [k for k,v in words_dic.items()]
 en = str()
@@ -28,6 +30,9 @@ def check_result(what_was_clicked):
         score_label.config(text=f"Correct!\nscore {match_clicked}/{total_clicked+1}, {round(match_clicked/(total_clicked+1) * 100, 2)}%")
         print()
         click_the_button()
+    else:
+        to_save = WordsToSave(en)
+        to_save.writeUp()
     total_clicked+=1
 
 def click_the_button():
