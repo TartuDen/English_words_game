@@ -21,7 +21,7 @@ class ReadDocx():
         for cell_eng,cell_rus in zip(column2.cells,column3.cells):
             # Get the text from the cell
             text_eng = cell_eng.text.strip()
-            text_rus = cell_rus.text.strip()
+            text_rus = cell_rus.text.rstrip("-")
             # Find the index of the "-/" characters in the text
             for i in list_:
                 index = text_eng.find(i)
