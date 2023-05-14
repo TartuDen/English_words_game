@@ -7,6 +7,7 @@ from to_save_words import WordsToSave
 get_words = ReadDocx()
 
 words_dic = get_words.read_words()
+dif_words_dic = get_words.readDifWords()
 eng_w = [k for k,v in words_dic.items()]
 en = str()
 rus = str()
@@ -28,14 +29,13 @@ def check_result(what_was_clicked):
     if what_was_clicked in rus or rus in what_was_clicked:
         match_clicked+=1
         score_label.config(text=f"Correct!\nscore {match_clicked}/{total_clicked+1}, {round(match_clicked/(total_clicked+1) * 100, 2)}%")
-        print()
-        click_the_button()
+        startGame()
     else:
-        to_save = WordsToSave(en)
+        to_save = WordsToSave(f"{en} - {rus}")
         to_save.writeUp()
     total_clicked+=1
 
-def click_the_button():
+def startGame():
     global en
     global rus
     en = random.choice(eng_w)
@@ -68,7 +68,7 @@ main_label.grid(row=2,column=1, sticky="nsew")
 
 
 extra_button = [Button(text="",command=check_result) for i in range(5)]
-click_the_button()
+startGame()
 
 
 
