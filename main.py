@@ -2,12 +2,13 @@ from tkinter import *
 from getWordsForTranslation import ReadDocx
 import random
 from to_save_words import WordsToSave
+from PIL import Image, ImageTk
 
 
 get_words = ReadDocx()
 
 words_dic = get_words.read_words()
-dif_words_dic = get_words.readDifWords()
+
 eng_w = [k for k,v in words_dic.items()]
 en = str()
 rus = str()
@@ -61,7 +62,8 @@ def startGame():
 score_label = Label(text="score", font=score_font, bg="lightblue")
 score_label.grid(row=1,column=1, sticky="nsew")
 
-
+# img=Image.open(".\\images\\card_front.png")
+# photo = ImageTk.PhotoImage(img)
 main_label = Label(text="", font=question_font, padx=50, pady=20, bg="lightgreen")
 main_label.grid(row=2,column=1, sticky="nsew")
 

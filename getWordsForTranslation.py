@@ -5,7 +5,7 @@ class ReadDocx():
     def __init__(self) -> None:
         pass
         # Open the Word file
-        doc = docx.Document('.\\wordFiles\\test.docx')
+        doc = docx.Document('.\\wordFiles\\MainEnglish.docx')
         # Get the first table in the document
         self.table = doc.tables[0]
         # self.read_words()
@@ -31,15 +31,6 @@ class ReadDocx():
                 final_dic[text_eng[:index].strip()]=text_rus
                 count+=1
         return(final_dic)
-    def readDifWords(self):
-        try:
-            with open(".\\wordFiles\\difWords.txt", "r") as data:
-                locWords=data.read()
-                locWords=locWords.split("\n")
-                return(locWords)
-            
-        except FileNotFoundError:
-            with open(".\\wordFiles\\difWords.txt", "w") as data:
-                return(None)
+
 
 # s=ReadDocx()
