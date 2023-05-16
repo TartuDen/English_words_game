@@ -40,8 +40,9 @@ def startGame():
     global en
     global rus
     en = random.choice(eng_w)
+    en_idx = eng_w.index(en)
     rus = words_dic[en]
-    main_label.config(text=en)
+    main_label.config(text=f"{en}\n{en_idx}/{len(eng_w)}")
     list_extra_answers = []
     for i in range(5):
         if i == 0:
