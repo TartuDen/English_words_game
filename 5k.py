@@ -73,7 +73,7 @@ learned_words = learned.read_words()
 count2 = 0
 for i in list5k:
     count2+=1
-    if count2>=100 and count2<200:
+    if count2>=200 and count2<400:
         print(i, " -")
 
 # print(learned_words.keys())
