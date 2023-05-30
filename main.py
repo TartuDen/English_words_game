@@ -10,10 +10,17 @@ get_words = ReadDocx()
 words_dic = get_words.read_words()
 
 eng_w = [k for k,v in words_dic.items()]
-en = str()
-rus = str()
+en_in_eng_v = str()
+ru_in_eng_v = str()
+
+en_in_rus_v = str()
+ru_in_rus_v = str()
+
 total_clicked = 0
 match_clicked = 0
+
+rus_dic={ru_meaning: eng_w for eng_w,ru_meaning in words_dic.items()}
+ru_w = [k for k,v in rus_dic.items()]
 
 
 new_window = Tk()
@@ -23,48 +30,104 @@ answer_font = ("Helvetica", 23)
 score_font= ("Helvetica",15)
 
 def check_result(what_was_clicked):
-    global en
-    global rus
+    rus_list_to_check_whatWasClicked= "абвгдежзиклмнопрстуфхчцшщьэюя"
+    check_en_or_rus = str()
+    global en_in_eng_v
+    global ru_in_eng_v
+    global en_in_rus_v
+    global ru_in_rus_v
+
     global total_clicked
     global match_clicked
-    if what_was_clicked in rus or rus in what_was_clicked:
-        match_clicked+=1
-        score_label.config(text=f"Correct!\nscore {match_clicked}/{total_clicked+1}, {round(match_clicked/(total_clicked+1) * 100, 2)}%")
-        startGame()
+    
+    
+
+    if what_was_clicked[0] in rus_list_to_check_whatWasClicked or what_was_clicked[-1] in rus_list_to_check_whatWasClicked:
+        check_en_or_rus = ru_in_eng_v
+        # print("wwk: ",what_was_clicked, "Rus: ", ru_in_eng_v," -- ", what_was_clicked[0],what_was_clicked[-1])
     else:
-        to_save = WordsToSave(f"{en} - {rus}")
+        check_en_or_rus = en_in_rus_v
+        # print("wwk: ",what_was_clicked, "Eng: ", en_in_rus_v)
+        
+    if (what_was_clicked in check_en_or_rus ):
+        # print("What was clicked: ", what_was_clicked, " in check en or rus: ", check_en_or_rus)
+        match_clicked+=1
+        score_label.config(text=f"Correct!\nscore {match_clicked}/{total_clicked+1}, {round(match_clicked/(total_clicked+1) * 100, 2)}%\n")
+        startGame()
+    else:       
+            
+        if what_was_clicked[0] in rus_list_to_check_whatWasClicked or what_was_clicked[-1] in rus_list_to_check_whatWasClicked:
+            to_save = WordsToSave(f"{en_in_eng_v} - {ru_in_eng_v}")
+            
+        else:
+            to_save = WordsToSave(f"{en_in_rus_v} - {ru_in_rus_v}")
+            
         to_save.writeUp()
     total_clicked+=1
 
 def startGame():
-    global en
-    global rus
-    en = random.choice(eng_w)
-    en_idx = eng_w.index(en)
-    rus = words_dic[en]
-    main_label.config(text=f"{en}\n{en_idx}/{len(eng_w)}")
-    list_extra_answers = []
-    for i in range(5):
-        if i == 0:
-            list_extra_answers.append(rus)
-        else:
-            w = random.choice(eng_w)
-            if words_dic[w] not in list_extra_answers:
-                list_extra_answers.append(words_dic[w])
-            else:
-                i-=1
-    new_list_extra_ansers = random.sample(list_extra_answers,len(list_extra_answers))
 
-    for idx,a in enumerate(new_list_extra_ansers):
-        extra_button[idx].config(text=a,font=answer_font)
-        extra_button[idx].config(command=lambda content=a: check_result(content))
-        extra_button[idx].grid(row=3+idx,column=1, sticky="nsew")
+
+    def eng_turn():
+        global en_in_eng_v
+        global ru_in_eng_v
+        en_in_eng_v = random.choice(eng_w)
+        en_idx = eng_w.index(en_in_eng_v)
+        ru_in_eng_v = words_dic[en_in_eng_v]
+        main_label.config(text=f"{en_in_eng_v}")
+        original_text_scoreLabel=score_label.cget("text")
+        score_label.config(text=f"{original_text_scoreLabel}\n{en_idx}/{len(eng_w)}")
+        list_extra_answers = []
+        for i in range(5):
+            if i == 0:
+                list_extra_answers.append(ru_in_eng_v)
+            else:
+                w = random.choice(eng_w)
+                if words_dic[w] not in list_extra_answers:
+                    list_extra_answers.append(words_dic[w])
+                else:
+                    i-=1
+        new_list_extra_ansers = random.sample(list_extra_answers,len(list_extra_answers))
+
+        for idx,a in enumerate(new_list_extra_ansers):
+            extra_button[idx].config(text=a,font=answer_font)
+            extra_button[idx].config(command=lambda content=a: check_result(content))
+            extra_button[idx].grid(row=3+idx,column=1, sticky="nsew")
+    
+    def rus_turn():
+        global en_in_rus_v
+        global ru_in_rus_v
+        ru_in_rus_v = random.choice(ru_w)
+        ru_idx = ru_w.index(ru_in_rus_v)
+        en_in_rus_v = rus_dic[ru_in_rus_v]
+        main_label.config(text=f"{ru_in_rus_v}")
+        original_text_scoreLabel=score_label.cget("text")
+        score_label.config(text=f"{original_text_scoreLabel}\n{ru_idx}/{len(ru_w)}")
+        list_extra_answers = []
+        for i in range(5):
+            if i == 0:
+                list_extra_answers.append(en_in_rus_v)
+            else:
+                w = random.choice(ru_w)
+                if rus_dic[w] not in list_extra_answers:
+                    list_extra_answers.append(rus_dic[w])
+                else:
+                    i-=1
+        new_list_extra_ansers = random.sample(list_extra_answers,len(list_extra_answers))
+
+        for idx,a in enumerate(new_list_extra_ansers):
+            extra_button[idx].config(text=a,font=answer_font)
+            extra_button[idx].config(command=lambda content=a: check_result(content))
+            extra_button[idx].grid(row=3+idx,column=1, sticky="nsew")
+    #___________________________________________________
+    # what_to_start = random.choice([rus_turn])
+    what_to_start = random.choice([eng_turn])
+    #__________________________________________________
+    what_to_start()
 
 score_label = Label(text="score", font=score_font, bg="lightblue")
 score_label.grid(row=1,column=1, sticky="nsew")
 
-# img=Image.open(".\\images\\card_front.png")
-# photo = ImageTk.PhotoImage(img)
 main_label = Label(text="", font=question_font, padx=50, pady=20, bg="lightgreen")
 main_label.grid(row=2,column=1, sticky="nsew")
 

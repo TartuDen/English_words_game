@@ -32,5 +32,4 @@ class ReadDocx():
                 count+=1
         return(final_dic)
 
-
 # s=ReadDocx()
