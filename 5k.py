@@ -60,6 +60,7 @@ list5k = ['the', 'to', 'it', 'and', 'that', 'of', 'is', 'in', 'what', 'we', 'me'
 learned_words = learned.read_words()
 # print(list(learned_words.keys()))
 
+# print(len(list5k))
 
 # clean_list = []
 # common=[]
@@ -70,10 +71,12 @@ learned_words = learned.read_words()
 #         count+=1
 #     else:
 #         common.append(word_)
+
+
 count2 = 0
 for i in list5k:
     count2+=1
-    if count2>=200 and count2<400:
+    if count2>=400 and count2<500:
         print(i, " -")
 
 # print(learned_words.keys())
