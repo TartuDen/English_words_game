@@ -29,7 +29,8 @@ answer_font = ("Helvetica", 23)
 score_font= ("Helvetica",15)
 
 def check_result(what_was_clicked):
-    rus_list_to_check_whatWasClicked= "абвгдежзийклмнопрстуфхцчшщъыьэюя"
+    print("wwk before: ", what_was_clicked)
+    rus_list_to_check_whatWasClicked= "абвгдежзийклмнопрстуфхцчшщъыьэюяАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
     check_en_or_rus = str()
     global en_in_eng_v
     global ru_in_eng_v
@@ -123,7 +124,7 @@ def startGame():
             extra_button[idx].grid(row=3+idx,column=1, sticky="nsew")
     #___________________________________________________
     # what_to_start = random.choice([rus_turn])
-    what_to_start = random.choice([eng_turn]) # bugged one
+    what_to_start = random.choice([eng_turn, rus_turn])
     #__________________________________________________
     what_to_start()
 
