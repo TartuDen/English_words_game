@@ -8,20 +8,19 @@ from PIL import Image, ImageTk
 get_words = ReadDocx()
 
 words_dic = get_words.read_words()
-
 eng_w = [k for k,v in words_dic.items()]
 en_in_eng_v = str()
 ru_in_eng_v = str()
 
-en_in_rus_v = str()
-ru_in_rus_v = str()
+
 
 total_clicked = 0
 match_clicked = 0
 
 rus_dic={ru_meaning: eng_w for eng_w,ru_meaning in words_dic.items()}
 ru_w = [k for k,v in rus_dic.items()]
-
+en_in_rus_v = str()
+ru_in_rus_v = str()
 
 new_window = Tk()
 # new_window.geometry("250x200")
@@ -30,7 +29,7 @@ answer_font = ("Helvetica", 23)
 score_font= ("Helvetica",15)
 
 def check_result(what_was_clicked):
-    rus_list_to_check_whatWasClicked= "абвгдежзиклмнопрстуфхчцшщьэюя"
+    rus_list_to_check_whatWasClicked= "абвгдежзийклмнопрстуфхцчшщъыьэюя"
     check_en_or_rus = str()
     global en_in_eng_v
     global ru_in_eng_v
@@ -44,13 +43,14 @@ def check_result(what_was_clicked):
 
     if what_was_clicked[0] in rus_list_to_check_whatWasClicked or what_was_clicked[-1] in rus_list_to_check_whatWasClicked:
         check_en_or_rus = ru_in_eng_v
-        # print("wwk: ",what_was_clicked, "Rus: ", ru_in_eng_v," -- ", what_was_clicked[0],what_was_clicked[-1])
+        print("wwk: ",what_was_clicked, "Rus: ", ru_in_eng_v," -- ", what_was_clicked[0],what_was_clicked[-1])
     else:
         check_en_or_rus = en_in_rus_v
         # print("wwk: ",what_was_clicked, "Eng: ", en_in_rus_v)
         
     if (what_was_clicked in check_en_or_rus ):
-        # print("What was clicked: ", what_was_clicked, " in check en or rus: ", check_en_or_rus)
+        print("What was clicked: ", what_was_clicked, " in check en or rus: ", check_en_or_rus)
+        print("-----------------------------")
         match_clicked+=1
         score_label.config(text=f"Correct!\nscore {match_clicked}/{total_clicked+1}, {round(match_clicked/(total_clicked+1) * 100, 2)}%\n")
         startGame()
@@ -88,15 +88,17 @@ def startGame():
                 else:
                     i-=1
         new_list_extra_ansers = random.sample(list_extra_answers,len(list_extra_answers))
-
+        print("created buttons:-------")
         for idx,a in enumerate(new_list_extra_ansers):
             extra_button[idx].config(text=a,font=answer_font)
             extra_button[idx].config(command=lambda content=a: check_result(content))
             extra_button[idx].grid(row=3+idx,column=1, sticky="nsew")
+            print(a)
+        print("----------------------------")
     
     def rus_turn():
-        global en_in_rus_v
         global ru_in_rus_v
+        global en_in_rus_v
         ru_in_rus_v = random.choice(ru_w)
         ru_idx = ru_w.index(ru_in_rus_v)
         en_in_rus_v = rus_dic[ru_in_rus_v]
@@ -121,7 +123,7 @@ def startGame():
             extra_button[idx].grid(row=3+idx,column=1, sticky="nsew")
     #___________________________________________________
     # what_to_start = random.choice([rus_turn])
-    what_to_start = random.choice([eng_turn])
+    what_to_start = random.choice([eng_turn]) # bugged one
     #__________________________________________________
     what_to_start()
 
