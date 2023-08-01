@@ -3,7 +3,7 @@ import pyttsx3
 def pronounce_text(text):
     # Initialize the text-to-speech engine
     engine = pyttsx3.init()
-    print(text)
+    # print(text)
     if "/" in text:
         text = text.split("/")[0]
         # text = text.strip("/")
@@ -11,7 +11,7 @@ def pronounce_text(text):
         text = text.split("[")[0]
     else:
         text = text.strip("-")
-    print("in voice: ", text)
+    # print("in voice: ", text)
 
     # Set properties (optional)
     # You can set properties like voice, rate, volume, etc.
