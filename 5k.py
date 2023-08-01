@@ -76,8 +76,191 @@ learned_words = learned.read_words()
 count2 = 0
 for i in list5k:
     count2+=1
-    if count2>=850 and count2<1000:
+    if count2>=1000 and count2<1250:
         print(i, " -")
 
 # print(learned_words.keys())
-
+"""nervous  -
+calm -
+choose  -
+choice -
+myself - 
+himself - 
+herself - 
+themselves  -
+mate  -
+press  -
+release -
+blame  -
+drugs  -
+ring  -
+earing - 
+necklece -
+mission  -
+named  -
+heaven  -
+race  -
+risk  -
+further  -
+action  -
+nickname  -
+fit  -
+smoke  -
+favor  -
+notice  -
+awesome  -
+smile  -
+director  -
+guard  -
+begin  -
+spot  -
+surprised  -
+innocent  -
+enemy  -
+battle  -
+dollars  -
+allow  -
+gay  -
+department  -
+guilty  -
+apart  -
+earlier  -
+duty  -
+suit  -
+bell  -
+hero  -
+destroy  -
+stage  -
+bunch  -
+according  -
+bigger  -
+admit  -
+witness  -
+upstairs  -
+steal  -
+kick  -
+once or twice -
+cross  -
+ways  -
+sergeant  -
+indeed  -
+gas  -
+energy  -
+pregnant  -
+to fire -
+favorite  -
+places  -
+prince  or princess -
+form  -
+silly  -
+mention  -
+build  -
+hole  -
+to figure  -
+to track  -
+to ring-
+above  -
+to hide-
+engine  -
+to complete  -
+however  -
+fresh  -
+weapon  -
+study  -
+burn  -
+crowd  -
+to treat  -
+to roll  -
+spirit  -
+danger  -
+cost  -
+empty  -
+level  -
+memory  -
+itself  -
+acting  -
+interest  -
+plans  -
+following  -
+bathroom  -
+built  -
+closer  -
+ray  -
+band  -
+apparently  -
+excited  -
+flight  -
+nature  -
+raise  -
+pop  -
+client  -
+bomb  -
+suspect  -
+extra  -
+bottle  -
+van  -
+mommy  -
+dogs  -
+wild  -
+ridiculous  -
+simply  -
+animal  -
+camp  -
+medical  -
+shame  -
+hoping  -
+majesty  -
+flowers  -
+famous  -
+asleep  -
+beauty  -
+driver  -
+keys  -
+awful  -
+large  -
+local  -
+deserve  -
+goddamn  -
+stone  -
+jane  -
+grace  -
+consider  -
+weekend  -
+wondering  -
+lay down  -
+plenty  -
+pants  -
+sweetheart  -
+excellent  -
+faith  -
+to beg  -
+responsible  -
+military  -
+to cheer -
+opportunity  -
+common  -
+bottom  -
+german  -
+whoever  -
+walked  -
+papers  -
+justice  -
+commander  -
+drug  -
+main  -
+knife  -
+devil  -
+necessary  -
+although  -
+princess  -
+lights  -
+flying  -
+rose  -
+clearly  -
+hat  -
+agreed  -
+corner  -
+code  -
+note  -
+due  -
+correct  -"""

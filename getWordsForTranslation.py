@@ -6,6 +6,7 @@ class ReadDocx():
         pass
         # Open the Word file
         doc = docx.Document('.\\wordFiles\\MainEnglish.docx')
+        # doc = docx.Document('.\\wordFiles\\MainEnglish voicetest.docx')
         # Get the first table in the document
         self.table = doc.tables[0]
         # self.read_words()
