@@ -11,6 +11,7 @@ def pronounce_text(text):
         text = text.split("[")[0]
     else:
         text = text.strip("-")
+    text =text +"."
     # print("in voice: ", text)
 
     # Set properties (optional)

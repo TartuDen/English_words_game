@@ -116,7 +116,8 @@ def startGame():
             extra_button[idx].config(command=lambda content=a: check_result(content))
             extra_button[idx].grid(row=3+idx,column=1, sticky="nsew")
 
-    what_to_start = random.choice([eng_turn, rus_turn])
+    # what_to_start = random.choice([eng_turn, rus_turn])
+    what_to_start = random.choice([eng_turn])
 
     what_to_start()
 
