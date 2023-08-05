@@ -1,8 +1,7 @@
-import pyttsx3
+from gtts import gTTS
+import os
 
 def pronounce_text(text):
-    # Initialize the text-to-speech engine
-    engine = pyttsx3.init()
     # print(text)
     if "/" in text:
         text = text.split("/")[0]
@@ -11,20 +10,16 @@ def pronounce_text(text):
         text = text.split("[")[0]
     else:
         text = text.strip("-")
-    text =text +"."
-    # print("in voice: ", text)
+    text_to_speak =text +"."
+    tts = gTTS(text=text_to_speak, lang='en')
+    tts.save("output.mp3")
 
-    # Set properties (optional)
-    # You can set properties like voice, rate, volume, etc.
-    # For example:
-    engine.setProperty('rate', 160)  # Speed of speech (words per minute)
-    engine.setProperty('volume', 1.0)  # Volume level (0.0 to 1.0)
-
-    # Pronounce the text
-    engine.say(text)
-
-    # Wait for the speech to finish
-    engine.runAndWait()
+    # Play the audio using a system command (platform-dependent)
+    if os.name == "nt":  # for Windows
+        os.system("start output.mp3")
+    else:  # for macOS and Linux
+        os.system("xdg-open output.mp3")
+    return
 
 if __name__ == "__main__":
     text_to_pronounce = "Hello, I am a Python program. Nice to meet you!"
