@@ -1,17 +1,28 @@
-# Installation
-Provide instructions on how to install or set up the project. Include prerequisites, dependencies, and steps to get the project up and running.
+## Installation
 
+To install the necessary packages, run the following commands:
+
+```bash
+pip install docx  # For working with Word documents in Python.
+pip install gtts  # Google Text-to-Speech (gTTS) for text-to-speech conversion.
+pip install pyttsx3  # A text-to-speech conversion library compatible with both Python 2 and 3.
+```
+To run the script:
+
+Open the terminal.
+Navigate to the directory where main.py is located.
+Run the script using the command:
+```bash
+python main.py
+```
 # Usage
-Explain how to use the project. Provide code examples, configuration settings, or any other information necessary to understand and utilize the project.
+The screen will display a word along with five answer options. Your task is to guess the word. The script will keep track of the number of correctly guessed words."
 
-![Alt text](readmeIMGS/image.png)
-![Alt text](readmeIMGS/image-1.png)
-![Alt text](readmeIMGS/image-2.png)
 # Features
-List and briefly describe the main features or functionalities of the project.
-
-# Contributing
-Guidelines for those who want to contribute to the project. Include information about how to report issues, propose enhancements, or submit pull requests.
-
-# License
-Indicate the project's license and any related information.
+- English - Russian translation.
+![Alt text](readmeIMGS/image-1.png)
+- Russian - English translation.
+![Alt text](readmeIMGS/image.png)
+- Correctly guessed words.
+- For each english world the gTTS -- Google Text-to-Speech package will compile a .mp3 file in the main root, and user can listen how to pronounce the word.
+![Alt text](readmeIMGS/image-3.png)

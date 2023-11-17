@@ -1,0 +1,19 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore IDE-specific files and directories
+.vscode/
+.idea/
+
+# Ignore project-specific files
+main2.py
+output.mp3
+test2.py
+text_to_speach2.py
+
+
+# Ignore folder legacy
+legacy/

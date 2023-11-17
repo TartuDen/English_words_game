@@ -67,7 +67,7 @@ def startGame():
         global en_in_eng_v
         global ru_in_eng_v
         en_in_eng_v = random.choice(eng_w)
-        # text_to_speach.pronounce_text(en_in_eng_v)
+        text_to_speach.pronounce_text(en_in_eng_v)
         en_idx = eng_w.index(en_in_eng_v)
         ru_in_eng_v = words_dic[en_in_eng_v]
         main_label.config(text=f"{en_in_eng_v}")
