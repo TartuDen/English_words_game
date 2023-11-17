@@ -16,6 +16,7 @@ Run the script using the command:
 python main.py
 ```
 # Usage
+A simple game to learn English language (based on Russian) written in python using tkinter GUI.
 The screen will display a word along with five answer options. Your task is to guess the word. The script will keep track of the number of correctly guessed words."
 
 # Features
